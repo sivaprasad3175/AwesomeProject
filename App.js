@@ -20,40 +20,10 @@ const App = () => {
     fetchData();
   }, []);
 
-  const onButtonPress = React.useCallback(() => {
 
-
-    ImagePicker.launchImageLibrary({
-      selectionLimit: 0,
-      mediaType: 'photo',
-      includeBase64: false,
-    }, setResponse);
-
-  }, []);
 
   return (
-    <View style={styles.container} >
-
-      <TouchableOpacity onPress={() => onButtonPress()}
-      ><Text>{'Open Image'}</Text></TouchableOpacity>
-
-      {response?.assets &&
-        response?.assets.map(({ uri }) => (
-          < View key={uri} style={{
-            marginVertical: 24,
-            alignItems: 'center',
-          }}>
-            <Image
-              resizeMode="cover"
-              resizeMethod="scale"
-              style={{ height: 100, width: 100, backgroundColor: 'blue' }}
-              source={{ uri: uri }}
-            />
-          </View>
-        ))
-      }
-
-    </View >
+    <View style={styles.container} />
   );
 };
 
