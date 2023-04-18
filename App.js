@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+//trying git commands
 
 import React, { useState, useEffect } from 'react';
 import { Animated, View, StyleSheet, TouchableOpacity, Text, Image, FlatList, SafeAreaView, Dimensions } from 'react-native';
