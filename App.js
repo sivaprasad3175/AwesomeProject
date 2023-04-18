@@ -1,29 +1,23 @@
 /* eslint-disable prettier/prettier */
 
 import React, { useState, useEffect } from 'react';
-import { Animated, View, StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
+import { Animated, View, StyleSheet, TouchableOpacity, Text, Image, FlatList, SafeAreaView, Dimensions } from 'react-native';
 import * as ImagePicker from 'react-native-image-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Carousel from 'react-native-snap-carousel';
+import Counter from './src/Screens/Counter';
+import { Provider } from 'react-redux';
+import store from './src/Store/store';
+
 
 const App = () => {
 
-
-  const [response, setResponse] = React.useState(null);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('https://example.com/data');
-      const json = await response.json();
-      setData(json);
-    };
-
-    fetchData();
-  }, []);
-
-
-
   return (
-    <View style={styles.container} />
+    <SafeAreaView style={styles.container} >
+      <Provider store={store}>
+        <Counter />
+      </Provider>
+    </SafeAreaView>
   );
 };
 
