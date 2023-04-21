@@ -8,16 +8,34 @@ import Carousel from 'react-native-snap-carousel';
 import Counter from './src/Screens/Counter';
 import { Provider } from 'react-redux';
 import store from './src/Store/store';
+import UserList from './src/Screens/UserList';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import EditUser from './src/Screens/EditUser';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import AddUser from './src/Screens/AddUser';
+
+
+const Stack = createStackNavigator();
 
 
 const App = () => {
 
   return (
-    <SafeAreaView style={styles.container} >
-      <Provider store={store}>
-        <Counter />
-      </Provider>
-    </SafeAreaView>
+
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <Provider store={store}>
+          <Stack.Navigator>
+            <Stack.Screen name="UserList" component={UserList} />
+            <Stack.Screen name="EditUser" component={EditUser} />
+            <Stack.Screen name="AddUser" component={AddUser} />
+
+          </Stack.Navigator>
+        </Provider>
+      </NavigationContainer>
+    </GestureHandlerRootView>
+
   );
 };
 
